@@ -1,0 +1,87 @@
+{% load static %}
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="{% static 'HerbierNApp/style/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'HerbierNApp/style/style_global.css' %}">
+    <meta charset="UTF-8">
+    <style>
+        body{
+        width:100%;
+        height:calc(100%);
+    }
+    main#main{
+        width:100%;
+        height:calc(100%);
+        background:white;
+    }
+    #login-right{
+        position:absolute;
+        left:0;
+        width: 50%;
+        height: calc(100%);
+        background-image: url("{% static 'foret4.jfif' %}");
+        background-repeat: no-repeat; /* Empêche la répétition de l'image de fond */
+        background-size: cover; /* Ajuste la taille de l'image pour couvrir tout le corps */
+        display:flex;
+        align-items:center;
+        border-radius:5px;
+    }
+    #login-left{
+        position:absolute;
+        right: 0;
+        width: 50%;
+        height:calc(100%);
+        background:linear-gradient(90deg,rgba(226,64,10,1)0%,
+        rgba(245,116,17,1) 37%, rgba(246,235,14,1)81%, rgba(48,255,0,1)100%);
+        display:flex;
+        align-items:center;
+        border-radius:5px; #0 0 0 100%
+    }
+    #login-right .card{
+        margin:auto;
+    }
+    .logo{
+        margin:auto;
+        font-size:8rem;
+        background:white;
+        padding:.3em 0.4em;
+        border-radius:50% 50%;
+        color:#000000b3;
+    }
+    body{
+        @media (max-width:) {
+            
+        }
+    }
+    </style>
+    <title>
+    </title>
+</head>
+<body>
+    {% comment %}
+    Cette page sera une sorte d'accueil qui permettra de choisir quelle la localité nous concerne
+    elle affichera les localités enregistrées dans la base de données dans un  modal d'un coté et dans l'autre modal
+    qui sera à droite il y aura une carte qui affichera les localités
+    {% endcomment %}
+   <main id="main" class="alert-info">
+       <div id="login-left">
+            <div class="logo">
+                <img src="./static/Herbier_national_de_guinee_logo.png" style="width:223px;height:280px;" alt="logo"/>
+            </div>
+        </div>
+        <div id="login-right">
+            <div class="card col-md-8" style="opacity:0.8">
+                <div class="card-body">
+                    <h2>Bienvenue à l'Herbier National de Guinée!</h2>
+                    <h3>Quelle localité voulez-vous visiter?</h3>
+                    <div class="list-group" style="border: white; border-radius: 3px; text-align: center">
+                        {% for localite in localities  %}
+                        <a href="{% url 'indextwo' localite.id %}" class="btn btn-primary list-group-item list-group-item-action">{{ localite.nom_air }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+   </main>
+</body>
+</html>

@@ -1,0 +1,15 @@
+import geocoder
+
+def get_coordinates():
+    # Utilisez le fournisseur de services de géocodage de votre choix (ici, OpenStreetMap)
+    location = geocoder.osm('me')
+    
+    if location.ok:
+        latitude, longitude = location.latlng
+        return latitude, longitude
+    else:
+        print("Impossible de récupérer les coordonnées.")
+
+# Exemple d'utilisation
+latitude, longitude = get_coordinates()
+print(f"Latitude: {latitude}, Longitude: {longitude}")

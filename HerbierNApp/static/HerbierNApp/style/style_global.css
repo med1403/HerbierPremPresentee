@@ -1,0 +1,30 @@
+#carouselExampleAutoplaying{
+    align-items: center;
+    align-content: center;
+
+    width: 50%;
+}
+/* Ajoutez un style CSS personnalisé */
+.carousel {
+    height: 50vh; /* La hauteur est définie à 50% de la hauteur de la vue */
+}
+
+.carousel-inner {
+    height: 100%; /* La hauteur du contenu du carrousel prend 100% de la hauteur de son conteneur */
+}
+
+.carousel-caption {
+    top: 50%; /* Positionne le haut du bloc de légende au milieu vertical */
+    transform: translateY(-50%); /* Décale le bloc de légende vers le haut de 50% de sa propre hauteur */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    margin-right: 10px;
+}
+.footer{
+    bottom: 0px;
+    width: 100%;
+    position:absolute;
+    
+}

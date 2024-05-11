@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <!-- Ajoutez les liens CDN Bootstrap ici -->
+    <!-- Exemple pour Bootstrap 4 -->
+    <link rel="stylesheet" href="{% static 'HerbierNApp/style/bootstrap.min.css' %}">
+    <style>
+        body{
+            background-image: url("{% static 'foret1.jfif' %}");
+            background-repeat: no-repeat; /* Empêche la répétition de l'image de fond */
+            background-size: cover; /* Ajuste la taille de l'image pour couvrir tout le corps */
+            display:flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post" action="" class="form bg-success bg-gradient" style="padding:4%; border-radius:10px; opacity:0.7; font-weight:bold;font-color:black">
+                    {% load i18n widget_tweaks %}
+                    {% csrf_token %}
+                    {% for field in form %} {% if field.errors %}
+                        {{ field.label }}
+                    {% else %}
+                        {{ field.label }}
+                        {{ field|attr:"class:form-control" }} {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                    {% endif %} {% endfor %}
+                    <button type="submit" class="btn btn-primary" style="margin: 2%">Ajouter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ajoutez les scripts CDN Bootstrap ici -->
+    <!-- Exemple pour Bootstrap 4 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

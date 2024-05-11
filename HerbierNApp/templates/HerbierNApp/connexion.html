@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'HerbierNApp/style/bootstrap.min.css'%}">
+    <title>Authentification page</title>
+    <style>
+        #contenant{
+            height: 100hv;
+            width: 50%;
+            background-color: white;
+            
+        }
+        .container{
+            background-color:green;
+        }
+    </style>
+</head>
+<body class="container" > 
+    <div class="row" id="contenant">
+        
+        {% if ErrorMessage %}
+        <h3>{{ErrorMessage}}</h3>
+        {% endif %}
+    <form class="form" action="" method="POST">
+         {% csrf_token %}
+        <label for="username">Login</label>
+        <input type="text" name="username">
+        <label for="Pasword">Pasword</label>
+        <input type="password" name="password" id="password">
+        <button type="submit">Connexion</button>
+
+    </form>
+</div>
+    <style src="{% static 'HerbierNApp/style/bootstrap.bundle.min.js' %}"></style>
+</body>
+</html>

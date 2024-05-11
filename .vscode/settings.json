@@ -1,0 +1,14 @@
+{
+    "emmet.includeLanguages": {
+        "html": "html",
+        "php": "html",
+        "django-html": "html"
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.showSuggestionsAsSnippets": true,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    }
+}

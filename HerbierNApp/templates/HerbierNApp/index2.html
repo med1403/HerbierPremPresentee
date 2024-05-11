@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'HerbierNApp/style/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'HerbierNApp/style/style_global.css' %}">
+    <script src="{% static 'HerbierNApp/style/bootstrap.bundle.min.js' %}"></script>
+    <meta charset="UTF-8">
+    <style>
+        body{
+        width:100%;
+        height:calc(100%);
+    }
+    main#main{
+        width:100%;
+        height:calc(100%);
+        background:white;
+        display: flex;
+    }
+    #login-right{
+        position:absolute;
+        left:0;
+        width: 50%;
+        height: calc(100%);
+        background-image: url("{% static 'foret5.jfif' %}");
+        background-repeat: no-repeat; /* Empêche la répétition de l'image de fond */
+        background-size: cover; /* Ajuste la taille de l'image pour couvrir tout le corps */
+        display:flex;
+        align-items:center;
+        border-radius:5px;
+    }
+    #login-left{
+        position:absolute;
+        right: 0;
+        width: 50%;
+        height:calc(100%);
+        display:flex;
+        align-items:center;
+        border-radius:5px; #0 0 0 100%
+    }
+    #login-left img {
+        width: 100%; /* Prend toute la largeur de login-left */
+        height: 100%; /* Prend toute la hauteur de login-left */
+        cursor: pointer;
+    }
+    #login-right .card{
+        margin:auto;
+    }
+    .logo{
+        margin:auto;
+        font-size:8rem;
+        background:white;
+        padding:.3em 0.4em;
+        border-radius:50% 50%;
+        color:#000000b3;
+    }
+    body{
+        @media (max-width: 576px) {
+            #login-right,
+            #login-left {
+                width: 100%; /* Les deux prennent la pleine largeur */
+            }
+        }
+
+        }
+    
+    </style>
+    <script>
+        function displayCategoryImage(imageUrl) {
+            var loginLeftImage = document.getElementById('login-left-image');
+            loginLeftImage.src = imageUrl;
+        }
+    </script>
+    <title>Title</title>
+</head>
+<body>
+    <main id="main">
+        <div id="login-left">
+            <img id="login-left-image" src="{% static 'HerbierNApp/logoHerbier1.png' %}" alt="Category Image">
+        </div>
+        <div id="login-right">
+            
+            <div class="card col-md-8" style="opacity:0.8">
+                <div class="card-body">
+                    <a class="btn btn-warning" href="{% url 'index' %}">Retour</a>
+                    <h3>Choisissez la catégorie à consulter!</h3>
+                    <div class="list-group" style="border: white; border-radius: 3px; text-align: center">
+                        {% for categorie in categories  %}
+                            <a onmouseover="displayCategoryImage('{{ categorie.image.url }}')" 
+                               href="{% url 'details_cat' categorie.libele localite.id %}" 
+                               class="btn btn-primary list-group-item list-group-item-action">
+                                {{ categorie.libele }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+ 
